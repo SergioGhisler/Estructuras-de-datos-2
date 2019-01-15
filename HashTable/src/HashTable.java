@@ -92,11 +92,17 @@ public class HashTable {
         // Search if key is in the list of the hash
         int hashedKey = getHash(key);
         for (KeyValue kv : table[hashedKey]) {
-            if (kv.key == key) {
-                return kv.value;
+            try {
+                if (kv.key == key) {
+                    return kv.value;
+                }
+
+            } catch (Exception e) {
+                System.err.println("An exception was thrown");
             }
+
         }
-        throw new RuntimeException("Key '" + key + "' not found");
+        throw  new Exception();
     }
 
     public void delete(String key) throws Exception {

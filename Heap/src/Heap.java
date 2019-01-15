@@ -130,8 +130,12 @@ public class Heap {
      */
     public List toList() throws Exception {
         List l = new List();
+        Heap h = new Heap();
         while(this.heap.size() != 0){
-            l.addLast(this.poll());
+           h.add(this.poll());
+        }
+        while(!h.isEmpty()){
+            l.addLast(h.poll());
         }
         return l;
     }
